@@ -8,9 +8,7 @@ require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
 
-// ===========================================================
 
-// PORT:
 const port = 5000;
 const app = express();
 app.use(cors());
@@ -22,8 +20,6 @@ app.use(fileUpload());
 
 // MONGODB CONNECTION
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.1ldzw.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-// const uri = "mongodb+srv://dynamicsoft:dynamicsoft7@cluster0.1ldzw.mongodb.net/dynamicSoft?retryWrites=true&w=majority";
-// console.log(process.env.DB_USER);
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -60,7 +56,7 @@ client.connect((err) => {
       });
   });
 
-  //========================= READ SERVICE AND SHOW (READ) ===================================
+  // READ SERVICE AND SHOW (READ) ===================================
   app.get('/services', (req, res) => {
     serviceCollection.find({}).toArray((err, documents) => {
       res.send(documents);
@@ -166,27 +162,3 @@ app.get('/', (req, res) => {
 
 // Listener port ============================
 app.listen(process.env.PORT || port);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//============================== ADD SERVICE (CREATE) ======================================
-// app.post('/addService', (req, res) => {
-//   const service = req.body;
-//   serviceCollection.insertOne(service).then((result) => {
-//     // console.log(result)
-//     res.send(result.insertedCount > 0);
-//   });
-// });
