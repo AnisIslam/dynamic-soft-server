@@ -35,5 +35,8 @@ Back-end Technology:
 - Cors, Body parser, Dotenv, nodemon
 - JWT Token
 
+Client Side git: https://github.com/AnisIslam/dynamic-soft-client
+
  [Live Website](https://dynamic-soft.web.app/)
 
+# dynamic-soft-server
